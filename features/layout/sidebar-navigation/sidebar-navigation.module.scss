@@ -137,5 +137,13 @@
 
   @media (min-width: breakpoint.$desktop) {
     display: flex;
+
+    img {
+      transition: transform 0.3s ease-in-out;
+    }
+
+    &.arrowRotated img {
+      transform: rotate(180deg);
+    }
   }
 }

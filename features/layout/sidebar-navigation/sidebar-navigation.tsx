@@ -20,6 +20,12 @@ export function SidebarNavigation() {
   const router = useRouter();
   const { isSidebarCollapsed, toggleSidebar } = useContext(NavigationContext);
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleToggleSidebar = () => {
+    console.log("Toggling Sidebar, Current State: ", isSidebarCollapsed);
+    toggleSidebar();
+  };
+
   return (
     <div
       className={classNames(
@@ -89,8 +95,10 @@ export function SidebarNavigation() {
               text="Collapse"
               iconSrc="/icons/arrow-left.svg"
               isCollapsed={isSidebarCollapsed}
-              onClick={() => toggleSidebar()}
-              className={styles.collapseMenuItem}
+              onClick={handleToggleSidebar}
+              className={classNames(styles.collapseMenuItem, {
+                [styles.arrowRotated]: isSidebarCollapsed,
+              })}
             />
           </ul>
         </nav>
